@@ -26,3 +26,5 @@ make shure the data persist.
   - CLEAN: minikube delete && rm ./srcs/mysql/wordpresscp.sql ./srcs/ftps/startcp.sh ./srcs/yaml/telegrafcp.yaml ./srcs/yaml/telegrafcp.conf ./srcs/nginx/indexcp.html ./srcs/grafana/startcp.sh 
  
 #################################################################################################
+
+Written in february 2020.
