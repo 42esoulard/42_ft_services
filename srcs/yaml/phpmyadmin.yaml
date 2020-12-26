@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+  labels:
+    app: phpmyadmin
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+        - name: phpmyadmin
+          image: phpmyadmin_alpine_esou
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MYSQL_HOSTNAME
+              value: mysql
+            - name: PMA_HOST
+              value: mysql
+            - name: PMA_USERNAME
+              value: root
+            - name: PMA_PASSWORD
+              value: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpmyadmin
+spec:
+  ports:
+    - port: 5000
+      nodePort: 5000
+  selector:
+    app: phpmyadmin
+  type: NodePort

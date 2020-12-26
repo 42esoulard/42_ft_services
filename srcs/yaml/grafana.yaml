@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+spec:
+  selector:
+    matchLabels:
+      app: grafana
+  replicas: 1
+  strategy:
+    type: Recreate
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - image: grafana_alpine_esou
+        imagePullPolicy: Never
+        name: grafana
+        env:
+        - name: GF_INSTALL_PLUGINS
+          value: grafana-piechart-panel, blackmirror1-singlestat-math-panel
+        - name: GF_SERVER_HTTP_PORT
+          value: "3000"
+        - name: GF_AUTH_BASIC_ENABLED
+          value: "false"
+        - name: GF_AUTH_ANONYMOUS_ENABLED
+          value: "true"
+        - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+          value: Admin
+      restartPolicy: Always
+      volumes:
+      - name: grafana-volume
+        hostPath:
+          path: /grafana
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+spec:
+  selector:
+    app: grafana
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 3000
