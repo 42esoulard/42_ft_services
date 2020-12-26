@@ -26,5 +26,5 @@ make shure the data persist.
   - DELETE CONTAINER: kubectl exec -it $(kubectl get pods | grep POD_NAME | cut -d" " -f1) -c CONTAINER_NAME -- /bin/sh -c "kill 1"
   - DELETE POD: kubectl delete POD_NAME
 
-  -CLEAN: minikube delete && rm ./srcs/mysql/wordpresscp.sql ./srcs/ftps/startcp.sh ./srcs/yaml/telegrafcp.yaml ./srcs/yaml/telegrafcp.conf ./srcs/nginx/indexcp.html ./srcs/grafana/startcp.sh 
+  - CLEAN: minikube delete && rm ./srcs/mysql/wordpresscp.sql ./srcs/ftps/startcp.sh ./srcs/yaml/telegrafcp.yaml ./srcs/yaml/telegrafcp.conf ./srcs/nginx/indexcp.html ./srcs/grafana/startcp.sh 
 #################################################################################################
