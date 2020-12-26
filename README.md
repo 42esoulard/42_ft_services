@@ -1,6 +1,5 @@
 # 42_ft_services
 Clusturing a docker-compose application and deploying it with Kubernetes.
-
 A multi-service cluster, with each service running in a dedicated container, all under Alpine Linux. 
 
 Contains : 
@@ -22,10 +21,8 @@ make shure the data persist.
   - OPEN SERVICE: minikube service SERVICE_NAME
   - PODS INFO: kubectl get pods
   - SSH: ssh admin@$(minikube ip) -p 400
-
   - DELETE CONTAINER: kubectl exec -it $(kubectl get pods | grep POD_NAME | cut -d" " -f1) -c CONTAINER_NAME -- /bin/sh -c "kill 1"
   - DELETE POD: kubectl delete POD_NAME
-
   - CLEAN: minikube delete && rm ./srcs/mysql/wordpresscp.sql ./srcs/ftps/startcp.sh ./srcs/yaml/telegrafcp.yaml ./srcs/yaml/telegrafcp.conf ./srcs/nginx/indexcp.html ./srcs/grafana/startcp.sh 
  
 #################################################################################################
