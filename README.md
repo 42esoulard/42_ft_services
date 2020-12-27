@@ -15,7 +15,7 @@ make shure the data persist.
   - ssh access to the nginx container 
   - restart of containers if they crash
 
-#################################################################################################
+#######################################################################################
   - START MINIKUBE: minikube start
   - DASHBOARD: minikube dashboard
   - OPEN SERVICE: minikube service SERVICE_NAME
@@ -25,6 +25,6 @@ make shure the data persist.
   - DELETE POD: kubectl delete POD_NAME
   - CLEAN: minikube delete && rm ./srcs/mysql/wordpresscp.sql ./srcs/ftps/startcp.sh ./srcs/yaml/telegrafcp.yaml ./srcs/yaml/telegrafcp.conf ./srcs/nginx/indexcp.html ./srcs/grafana/startcp.sh 
  
-#################################################################################################
+#######################################################################################
 
 Written in february 2020.
